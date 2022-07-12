@@ -1,0 +1,150 @@
+
+<!-- ESTO ESTÁ SOLO PORQUE SE SOLAPA LA BARRA DE NAVEGACIÓN CON EL CONTENIDO :( -->
+<main id="main">
+  <section>
+    <div class="content">
+      <div class="container">
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <h3>Registrar Producto</h3>
+        </div>
+</div>
+
+<form name="FormRegistro" [formGroup]='FormRegistro'>
+  <div class="container-fluid">
+    <fieldset>
+      <!-- Campo Nombre -->
+      <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="Nombre">Nombre<span class="text-danger">*</span>:</label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <input type="text" class="form-control" formControlName="Nombre" [ngClass]="{'is-invalid': (FormRegistro.controls['Nombre'].touched)  
+            && FormRegistro.controls['Nombre'].errors}" />
+
+          <div class="validacion" *ngIf="(FormRegistro.controls['Nombre'].touched) 
+                        && FormRegistro.controls['Nombre'].hasError('required')">
+            Dato requerido.
+          </div>
+          <div class="validacion"
+            *ngIf="(FormRegistro.controls['Nombre'].touched) 
+                       && (FormRegistro.controls['Nombre'].hasError('minlength') || FormRegistro.controls['Nombre'].hasError('maxlength')) ">
+            Dato texto, 4 a 55 caracteres.
+          </div>
+        </div>
+      </div>
+      <!-- Campo Marca -->
+      <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="Marca">Marca<span
+                    class="text-danger">*</span>:</label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <input type="text" class="form-control" formControlName="Marca"
+         [ngClass]="{'is-invalid': (FormRegistro.controls['Marca'].touched)  
+            && FormRegistro.controls['Marca'].errors}"/>
+
+          <div class="validacion" *ngIf="(FormRegistro.controls['Marca'].touched) 
+                        && FormRegistro.controls['Marca'].hasError('required')">
+            Dato requerido.
+          </div>
+          <div class="validacion"
+            *ngIf="(FormRegistro.controls['Marca'].touched) 
+                       && (FormRegistro.controls['Marca'].hasError('minlength') || FormRegistro.controls['Marca'].hasError('maxlength')) ">
+            Dato texto, 4 a 55 caracteres.
+          </div>
+        </div>
+      </div>
+      <!-- Campo Descripcion -->
+      <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="Descripcion">Descripcion<span
+                    class="text-danger">*</span>:</label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <input type="text" class="form-control" formControlName="Descripcion"
+         [ngClass]="{'is-invalid': (FormRegistro.controls['Descripcion'].touched)  
+            && FormRegistro.controls['Descripcion'].errors}"/>
+
+          <div class="validacion" *ngIf="(FormRegistro.controls['Descripcion'].touched) 
+                        && FormRegistro.controls['Descripcion'].hasError('required')">
+            Dato requerido.
+          </div>
+          <div class="validacion"
+            *ngIf="(FormRegistro.controls['Descripcion'].touched) 
+                       && (FormRegistro.controls['Descripcion'].hasError('minlength') || FormRegistro.controls['Descripcion'].hasError('maxlength')) ">
+            Dato texto, 4 a 55 caracteres.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo categoria -->
+      <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="Categoria">
+                Categoria<span class="text-danger">*</span>:
+          </label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <select name="Categoria" class="form-control" formControlName="Categoria"
+        [ngClass]="{'is-invalid': (FormRegistro.controls['Categoria'].touched)  
+            && FormRegistro.controls['Categoria'].errors}" >
+            <option value="lacteos">Lácteos</option>
+            <option value="carnes">Carnes</option>
+            <option value="fideos">Fideos</option>
+            <option value="otros">Otros</option>
+            
+                </select>
+          <div class="validacion" *ngIf="(FormRegistro.controls['Categoria'].touched) 
+                        && FormRegistro.controls['Categoria'].hasError('required')">
+            Dato requerido.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo Imagen -->
+
+      <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="Imagen">Imagen<span
+                    class="text-danger">*</span>:</label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <input type="text" class="form-control" formControlName="Imagen"
+         [ngClass]="{'is-invalid': (FormRegistro.controls['Imagen'].touched)  
+            && FormRegistro.controls['Imagen'].errors}"/>
+
+          <div class="validacion" *ngIf="(FormRegistro.controls['Imagen'].touched) 
+                        && FormRegistro.controls['Imagen'].hasError('required')">
+            Dato requerido.
+          </div>
+          <div class="validacion"
+            *ngIf="(FormRegistro.controls['Imagen'].touched) 
+                       && (FormRegistro.controls['Imagen'].hasError('minlength') || FormRegistro.controls['Imagen'].hasError('maxlength')) ">
+            Dato texto, 4 a 55 caracteres.
+          </div>
+        </div>
+      </div>
+    
+    </fieldset>
+<!-- Botones Grabar, Cancelar/Volver' -->
+<br>
+<br>
+<div class="row justify-content-center botones">
+  <button type="button" class="btn btn-primary">
+        <i class="fa fa-check"></i> Grabar
+    </button>
+  &nbsp;
+  <button type="button" class="btn btn-warning">
+        <i class="fa fa-undo"></i> Volver
+    </button>
+</div>
+
+  </div>
+</form>
