@@ -1,0 +1,149 @@
+
+<!-- ESTO ESTÁ SOLO PORQUE SE SOLAPA LA BARRA DE NAVEGACIÓN CON EL CONTENIDO :( -->
+<main id="main">
+    <section>
+      <div class="content">
+        <div class="container">
+  
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <div class="row">
+          <div class="col-sm-4 col-md-3 offset-md-1">
+            <h3>Publicar Producto</h3>
+          </div>
+  </div>
+  
+  <form name="FormRegistro" [formGroup]='FormRegistro'>
+    <div class="container-fluid">
+      <fieldset>
+
+                    <!--campo precio-->
+      <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="Precio">Precio<span
+                    class="text-danger">*</span>:</label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <input type="text" name="Precio" class="form-control" formControlName="Precio"
+            [ngClass]="{'is-invalid': (FormRegistro.controls['Precio'].touched)  
+            && FormRegistro.controls['Precio'].errors}" />
+          <div class="validacion" *ngIf="(FormRegistro.controls['Precio'].touched) 
+                       && FormRegistro.controls['Precio'].hasError('required')">
+            Dato requerido.
+          </div>
+          <div class="validacion" *ngIf="(FormRegistro.controls['Precio'].touched) 
+               && FormRegistro.controls['Precio'].hasError('pattern')">
+            Dato numérico, 1 a 7 dígitos.
+          </div>
+        </div>
+      </div>
+              <!--campo cantidad-->
+              <div class="row">
+                <div class="col-sm-4 col-md-3 offset-md-1">
+                  <label class="col-form-label" for="Cantidad">Cantidad<span
+                            class="text-danger">*</span>:</label>
+                </div>
+                <div class="col-sm-8 col-md-6">
+                  <input type="text" name="Cantidad" class="form-control" formControlName="Cantidad"
+                    [ngClass]="{'is-invalid': (FormRegistro.controls['Cantidad'].touched)  
+                    && FormRegistro.controls['Cantidad'].errors}" />
+                  <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched) 
+                               && FormRegistro.controls['Cantidad'].hasError('required')">
+                    Dato requerido.
+                  </div>
+                  <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched) 
+                       && FormRegistro.controls['Cantidad'].hasError('pattern')">
+                    Dato numérico, 1 a 7 dígitos.
+                  </div>
+                </div>
+              </div>
+
+              <!-- campo fecha de vencimiento -->
+    
+                    <!--campo fechaalta-->
+      <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label">Fecha de alta<span
+                    class="text-danger">*</span>:
+          </label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <input class="form-control" formControlName="FechaVencimiento"
+                           name="FechaAlta"
+                           [ngClass]="{'is-invalid': (FormRegistro.controls['FechaVencimiento'].touched)  
+            && FormRegistro.controls['FechaVencimiento'].errors}" />
+
+          <div class="validacion" *ngIf="(FormRegistro.controls['FechaVencimiento'].touched) 
+                       && FormRegistro.controls['FechaVencimiento'].hasError('required')">
+            Dato requerido.
+          </div>
+          <div class="validacion" *ngIf="(FormRegistro.controls['FechaVencimiento'].touched) 
+                       && FormRegistro.controls['FechaVencimiento'].hasError('pattern')">
+            Dato fecha, formato dd/mm/aaaa.
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo Medios de pago aceptados -->
+<div class="row">
+    <div class="col-sm-4 col-md-3 offset-md-1">
+      <label class="col-form-label">Medios de pago aceptados:</label>
+    </div>
+    <div class="col-6">
+      <div class="custom-control custom-checkbox">
+        <input
+          class="custom-control-input"
+          type="checkbox"
+          id="TieneTrabajo"
+          formControlName="TieneTrabajo"
+        />
+        <label class="custom-control-label" for="TieneTrabajo">
+          Efectivo en el local
+        </label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input
+          class="custom-control-input"
+          type="checkbox"
+          id="TieneAuto"
+          formControlName="TieneAuto"
+        />
+        <label class="custom-control-label" for="TieneAuto">
+          Mercado Pago
+        </label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input
+          class="custom-control-input"
+          type="checkbox"
+          id="TieneCasa"
+          formControlName="TieneCasa"
+        />
+        <label class="custom-control-label" for="TieneCasa">
+          Transferencia
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+      </fieldset>
+  <!-- Botones Grabar, Cancelar/Volver' -->
+  <br>
+  <br>
+  <div class="row justify-content-center botones">
+    <button type="button" class="btn btn-primary">
+          <i class="fa fa-check"></i> Grabar
+      </button>
+    &nbsp;
+    <button type="button" class="btn btn-warning">
+          <i class="fa fa-undo"></i> Volver
+      </button>
+  </div>
+  
+    </div>
+  </form>
+

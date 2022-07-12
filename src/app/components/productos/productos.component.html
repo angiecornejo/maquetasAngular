@@ -61,28 +61,26 @@
           </div>
         </div>
       </div>
-      <!-- Campo Descripcion -->
-      <div class="row">
-        <div class="col-sm-4 col-md-3 offset-md-1">
-          <label class="col-form-label" for="Descripcion">Descripcion<span
-                    class="text-danger">*</span>:</label>
-        </div>
-        <div class="col-sm-8 col-md-6">
-          <input type="text" class="form-control" formControlName="Descripcion"
-         [ngClass]="{'is-invalid': (FormRegistro.controls['Descripcion'].touched)  
-            && FormRegistro.controls['Descripcion'].errors}"/>
 
-          <div class="validacion" *ngIf="(FormRegistro.controls['Descripcion'].touched) 
-                        && FormRegistro.controls['Descripcion'].hasError('required')">
-            Dato requerido.
-          </div>
-          <div class="validacion"
-            *ngIf="(FormRegistro.controls['Descripcion'].touched) 
-                       && (FormRegistro.controls['Descripcion'].hasError('minlength') || FormRegistro.controls['Descripcion'].hasError('maxlength')) ">
-            Dato texto, 4 a 55 caracteres.
-          </div>
-        </div>
-      </div>
+
+      <!-- Campo descripcion -->
+            <div class="row">
+              <div class="col-sm-4 col-md-3 offset-md-1">
+                <label class="col-form-label">Descripcion:</label>
+              </div>
+              <div class="col-sm-8 col-md-6">
+                <textarea
+                  rows="5"
+                  class="form-control is-valid"
+                  formControlName="Descripcion"
+                  maxlength="280"
+                ></textarea>
+                <small class="d-block text-right"
+                  >{{ FormRegistro.value.Descripcion?.length || 0 }} de 280
+                  caracteres</small
+                >
+              </div>
+            </div>
 
       <!-- Campo categoria -->
       <div class="row">

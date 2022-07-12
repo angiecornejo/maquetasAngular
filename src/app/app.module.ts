@@ -10,6 +10,20 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
+import {
+  NgbDatepickerModule,
+  NgbModalModule,
+  NgbModule,
+  NgbPaginationModule,
+  NgbTypeaheadModule,
+  NgbDateAdapter,
+  NgbDateParserFormatter,
+  NgbDatepickerI18n
+} from '@ng-bootstrap/ng-bootstrap';
+// import { DatePickerAdapterISO } from './shared/DatePickerAdapterISO';
+// import { DatePickerParserFormatter } from './shared/DatePickerParserFormater';
+// import { DatePickerSpanish } from './shared/DatePickerSpanish';
 
 @NgModule({
   declarations: [
@@ -18,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     LandingPageComponent,
     LoginComponent,
-    ProductosComponent
+    ProductosComponent,
+    PublicacionesComponent
   ],
   imports: [
     BrowserModule,
@@ -26,11 +41,21 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     RouterModule.forRoot([
       { path: 'productos', component: ProductosComponent },
+      { path: 'publicaciones', component: PublicacionesComponent }
       
     
-    ])
+    ]),
+    NgbModule,
+    NgbDatepickerModule,
+    NgbPaginationModule,
+    NgbTypeaheadModule,
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: "/" }],
+  providers: [{ provide: APP_BASE_HREF, useValue: "/" },
+    // ref angular ngbootrapt datepicker
+    // { provide: NgbDateAdapter, useClass: DatePickerAdapterISO },
+    // { provide: NgbDateParserFormatter, useClass: DatePickerParserFormatter }, // formato datepicker desde/hacia el imput
+    // { provide: NgbDatepickerI18n, useClass: DatePickerSpanish }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
