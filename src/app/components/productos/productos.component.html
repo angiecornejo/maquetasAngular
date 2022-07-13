@@ -11,12 +11,77 @@
 </main>
 
 <div class="row">
-        <div class="col-sm-4 col-md-3 offset-md-1">
-          <h3>Registrar Producto</h3>
-        </div>
+  <div class="col-sm-4 col-md-3 offset-md-1">
+    <h3>Mis Productos</h3>
+  </div>
 </div>
 
-<form name="FormRegistro" [formGroup]='FormRegistro'>
+<!-- Formulario Filtro de busqueda, se ve cuando la accion es Listado(busqueda/listado)-->
+<form name="FormBusqueda" [formGroup]='FormBusqueda' *ngIf="AccionABMC == 'I' || AccionABMC == 'B'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4 col-md-2">
+        <label class="col-form-label">Nombre:</label>
+      </div>
+      <div class="col-sm-8 col-md-4">
+        <input type="text" name="Nombre" class="form-control" formControlName="Nombre" maxlength="55"/>
+      </div>
+    
+    </div>
+
+    <hr>
+
+    <!-- Botones -->
+    <div class="row justify-content-center botones">
+      <button type="button" class="btn btn-primary" (click)="Buscar()">
+            <i class="fa fa-search"> </i> Buscar
+        </button>
+      <button type="button" class="btn btn-primary" (click)="Agregar()">
+            <i class="fa fa-plus"> </i> 
+            Agregar
+        </button>
+    </div>
+  </div>
+  <!-- Tabla de resutados de busqueda -->
+<div class=container id="divTablaResultados" *ngIf="AccionABMC == 'B'">
+  <table class="table table-hover table-sm table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Id</th>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Marca</th>
+        <th class="text-center">Descripcion</th>
+        <th class="text-center">Categoria</th>
+        <th class="text-center">Imagen</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of Productos">
+        <td>{{prod.IdProducto}}</td>
+        <td>{{prod.Nombre}}</td>
+        <td>{{prod.Marca}}</td>
+        <td>{{prod.Descripcion}}</td>
+        <td>{{prod.Categoria}}</td>
+        <td>{{prod.Imagen}}</td>
+        <td class="text-center text-nowrap">
+          <button class="btn btn-sm btn-outline-danger" title="Eliminar">Eliminar
+          </button>
+          <button class="btn btn-sm btn-outline-primary" title="Modificar">Modificar
+          </button>
+          <button class="btn  btn-sm btn-outline-success" title="Publicar" routerLink="/publicaciones">Publicar
+                </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</form>
+
+
+
+
+<form name="FormRegistro" [formGroup]='FormRegistro' *ngIf="AccionABMC == 'A'">
   <div class="container-fluid">
     <fieldset>
       <!-- Campo Nombre -->
@@ -93,12 +158,12 @@
           <select name="Categoria" class="form-control" formControlName="Categoria"
         [ngClass]="{'is-invalid': (FormRegistro.controls['Categoria'].touched)  
             && FormRegistro.controls['Categoria'].errors, 'is-valid': FormRegistro.controls.Categoria.valid}" >
-            <option value="lacteos">Lácteos</option>
-            <option value="carnes">Carnes</option>
-            <option value="fideos">Fideos</option>
-            <option value="otros">Otros</option>
-            
-                </select>
+            <option *ngFor="let cat of Categorias" [ngValue]="cat.Id">
+              ‌{{ cat.Nombre }}</option>  
+          </select>
+
+    
+
           <div class="validacion" *ngIf="(FormRegistro.controls['Categoria'].touched) 
                         && FormRegistro.controls['Categoria'].hasError('required')">
             Dato requerido.
@@ -139,7 +204,7 @@
         <i class="fa fa-check"></i> Grabar
     </button>
   &nbsp;
-  <button type="button" class="btn btn-warning">
+  <button type="button" class="btn btn-warning" (click)="Volver()">
         <i class="fa fa-undo"></i> Volver
     </button>
 </div>

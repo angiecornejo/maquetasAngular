@@ -13,6 +13,7 @@ import {
 export class PublicacionesComponent implements OnInit {
 
   Titulo = 'Productos';
+
   Categorias = ["Lácteos", "Fideos", ];
   Respuestas = ['Si', 'No'];
   FormRegistro = new FormGroup({
@@ -37,7 +38,7 @@ export class PublicacionesComponent implements OnInit {
 
   });
 
-;
+
 
   constructor() { }
 
