@@ -16,7 +16,7 @@ export class PublicacionesComponent implements OnInit {
   Categorias = ["Lácteos", "Fideos", ];
   Respuestas = ['Si', 'No'];
   FormRegistro = new FormGroup({
-
+    Producto: new FormControl('', [Validators.required]),
     Precio: new FormControl(null, [
       Validators.required,
       Validators.pattern('[0-9]{1,7}'),

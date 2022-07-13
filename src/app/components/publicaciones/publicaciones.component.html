@@ -20,6 +20,59 @@
     <div class="container-fluid">
       <fieldset>
 
+        <div class="row">
+          <div class="subtitulo col">
+            <i class="fa fa-user-alt"></i>Elija el producto que quiere publicar
+          </div>
+        </div>
+                <!-- Campo Producto -->
+                <div class="row">
+                <div class="col-sm-4 col-md-3 offset-md-1">
+                  <label class="col-form-label">
+                    Producto<span class="text-danger">*</span>:
+                  </label>
+                </div>
+        
+                <div class="col-sm-8 col-md-4">
+                  <div class="input-group">
+                    <div
+                      class="input-group-prepend"
+                      ngbTooltip="Busqueda progresiva segun texto ingresado, al menos 3 caracteres..."
+                    >
+                      <div class="input-group-text"><i class="fa fa-search"></i></div>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="escriba aqui para buscar"
+                      class="form-control"
+                      #RefDepartamento
+                      formControlName="Producto"
+                      [ngClass]="{
+                        'is-invalid':
+                          (FormRegistro.controls.Producto.touched) &&
+                          FormRegistro.controls.Producto.invalid,
+                        'is-valid': FormRegistro.controls.Producto.valid
+                      }"
+                    />
+                  </div>
+                  <div
+                    class="validacion"
+                    *ngIf="
+                    (FormRegistro.controls['Producto'].touched) 
+                    && FormRegistro.controls['Producto'].hasError('required')
+                    "
+                  >
+                    Dato requerido.
+                  </div>
+                </div>
+              </div>
+        
+        <div class="row">
+          <div class="subtitulo col">
+            <i class="fa fa-user-alt"></i>Datos extra del Producto
+          </div>
+        </div>
+
                     <!--campo precio-->
       <div class="row">
         <div class="col-sm-4 col-md-3 offset-md-1">
@@ -61,7 +114,7 @@
         </div>
       </div>
 
-              <!-- campo fecha de vencimiento -->
+      <!-- campo fecha de vencimiento -->
               <div class="row">
                 <div class="col-sm-4 col-md-3 offset-md-1">
                   <label class="col-form-label"
@@ -76,7 +129,7 @@
                       maxlength="10"
                       formControlName="FechaVencimiento"
                       ngbDatepicker
-                      [minDate]="{ year: 1900, month: 1, day: 1 }"
+                      [minDate]="{ year: 2022, month: 1, day: 1 }"
                       [maxDate]="{ year: 2031, month: 1, day: 1 }"
                       #RefFechaIngreso="ngbDatepicker"
                       [ngClass]="{
@@ -103,52 +156,122 @@
                   && FormRegistro.controls['FechaVencimiento'].hasError('required')" > Dato requerido.  </div>
                 <div class="validacion" *ngIf="(FormRegistro.controls['FechaVencimiento'].touched) 
                 && FormRegistro.controls['FechaVencimiento'].hasError('pattern')">
-                  Dato fecha, formato dd/mm/aaaa. Año >= 1900
+                  Dato fecha, formato dd/mm/aaaa. Año >= 2022
                 </div>
                 </div>
               </div>
     
-      <!-- Campo Medios de pago aceptados -->
-<div class="row">
-    <div class="col-sm-4 col-md-3 offset-md-1">
-      <label class="col-form-label">Medios de pago aceptados:</label>
+
+    <!-- Campo reservable -->
+    <div class="row">
+      <div class="col-sm-4 col-md-3 offset-md-1">
+        <label class="col-form-label"
+          >Tipo de Producto<span class="text-danger">*</span>:</label
+        >
+      </div>
+      <div class="col-6">
+        <div class="custom-control custom-radio">
+          <input
+            class="custom-control-input"
+            type="radio"
+            name="IdSexo"
+            value="Reservable"
+            id="Reservable"
+            formControlName="Reservable"
+            [ngClass]="{
+              'is-invalid':
+                (FormRegistro.controls.Reservable.touched) &&
+                FormRegistro.controls.Reservable.errors
+            }"
+          />
+          <label
+            class="custom-control-label"
+            for="Reservable"
+          >
+            Reserbable
+          </label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input
+            class="custom-control-input"
+            type="radio"
+            name="IdSexo"
+            value="Reservable"
+            id="Reservable"
+            formControlName="Reservable"
+            [ngClass]="{
+              'is-invalid':
+                (FormRegistro.controls.Reservable.touched) &&
+                FormRegistro.controls.Reservable.errors
+            }"
+          />
+          <label
+            class="custom-control-label"
+            for="Reservable"
+          >
+            No Reserbable
+          </label>
+        </div>
+        <div
+          class="validacion"
+          *ngIf="(FormRegistro.controls['Reservable'].touched) 
+          && FormRegistro.controls['Reservable'].hasError('pattern')"
+
+        >
+          Dato requerido.
+        </div>
+      </div>
     </div>
-    <div class="col-6">
-      <div class="custom-control custom-checkbox">
-        <input
-          class="custom-control-input"
-          type="checkbox"
-          id="Efectivo"
-          formControlName="Efectivo"
-        />
-        <label class="custom-control-label" for="Efectivo">
-          Efectivo en el local
-        </label>
-      </div>
-      <div class="custom-control custom-checkbox">
-        <input
-          class="custom-control-input"
-          type="checkbox"
-          id="MercadoPago"
-          formControlName="MercadoPago"
-        />
-        <label class="custom-control-label" for="MercadoPago">
-          Mercado Pago
-        </label>
-      </div>
-      <div class="custom-control custom-checkbox">
-        <input
-          class="custom-control-input"
-          type="checkbox"
-          id="Transferencia"
-          formControlName="Transferencia"
-        />
-        <label class="custom-control-label" for="Transferencia">
-          Transferencia
-        </label>
-      </div>
+
+
+  <div class="row">
+    <div class="subtitulo col">
+      <i class="fa fa-user-alt"></i>Datos de la Publicación
     </div>
   </div>
+
+
+      <!-- Campo Medios de pago aceptados -->
+      <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label">Medios de pago aceptados:</label>
+        </div>
+        <div class="col-6">
+          <div class="custom-control custom-checkbox">
+            <input
+              class="custom-control-input"
+              type="checkbox"
+              id="Efectivo"
+              formControlName="Efectivo"
+            />
+            <label class="custom-control-label" for="Efectivo">
+              Efectivo en el local
+            </label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input
+              class="custom-control-input"
+              type="checkbox"
+              id="MercadoPago"
+              formControlName="MercadoPago"
+            />
+            <label class="custom-control-label" for="MercadoPago">
+              Mercado Pago
+            </label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input
+              class="custom-control-input"
+              type="checkbox"
+              id="Transferencia"
+              formControlName="Transferencia"
+            />
+            <label class="custom-control-label" for="Transferencia">
+              Transferencia
+            </label>
+          </div>
+        </div>
+      </div>
 
 
       </fieldset>

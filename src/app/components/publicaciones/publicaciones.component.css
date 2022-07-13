@@ -47,7 +47,7 @@ body {
     /* font-weight: bold; */
     background-image: linear-gradient(
       to right,
-      rgba(175, 18, 189, 1),
+      rgb(23, 1, 120),
       rgba(175, 180, 220, 0.5)
     );
   }
