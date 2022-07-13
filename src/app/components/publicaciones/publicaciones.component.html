@@ -27,9 +27,9 @@
                     class="text-danger">*</span>:</label>
         </div>
         <div class="col-sm-8 col-md-6">
-          <input type="text" name="Precio" class="form-control" formControlName="Precio"
+          <input type="text" name="Precio" maxlength="7" class="form-control" formControlName="Precio"
             [ngClass]="{'is-invalid': (FormRegistro.controls['Precio'].touched)  
-            && FormRegistro.controls['Precio'].errors}" />
+            && FormRegistro.controls['Precio'].errors, 'is-valid': FormRegistro.controls.Precio.valid}" />
           <div class="validacion" *ngIf="(FormRegistro.controls['Precio'].touched) 
                        && FormRegistro.controls['Precio'].hasError('required')">
             Dato requerido.
@@ -40,53 +40,74 @@
           </div>
         </div>
       </div>
-              <!--campo cantidad-->
-              <div class="row">
-                <div class="col-sm-4 col-md-3 offset-md-1">
-                  <label class="col-form-label" for="Cantidad">Cantidad<span
-                            class="text-danger">*</span>:</label>
-                </div>
-                <div class="col-sm-8 col-md-6">
-                  <input type="text" name="Cantidad" class="form-control" formControlName="Cantidad"
-                    [ngClass]="{'is-invalid': (FormRegistro.controls['Cantidad'].touched)  
-                    && FormRegistro.controls['Cantidad'].errors}" />
-                  <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched) 
-                               && FormRegistro.controls['Cantidad'].hasError('required')">
-                    Dato requerido.
-                  </div>
-                  <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched) 
-                       && FormRegistro.controls['Cantidad'].hasError('pattern')">
-                    Dato numérico, 1 a 7 dígitos.
-                  </div>
-                </div>
-              </div>
-
-              <!-- campo fecha de vencimiento -->
-    
-                    <!--campo fechaalta-->
+      <!--campo cantidad-->
       <div class="row">
         <div class="col-sm-4 col-md-3 offset-md-1">
-          <label class="col-form-label">Fecha de alta<span
-                    class="text-danger">*</span>:
-          </label>
+          <label class="col-form-label" for="Cantidad">Cantidad<span
+                    class="text-danger">*</span>:</label>
         </div>
         <div class="col-sm-8 col-md-6">
-          <input class="form-control" formControlName="FechaVencimiento"
-                           name="FechaAlta"
-                           [ngClass]="{'is-invalid': (FormRegistro.controls['FechaVencimiento'].touched)  
-            && FormRegistro.controls['FechaVencimiento'].errors}" />
-
-          <div class="validacion" *ngIf="(FormRegistro.controls['FechaVencimiento'].touched) 
-                       && FormRegistro.controls['FechaVencimiento'].hasError('required')">
+          <input type="text" name="Cantidad" maxlength="7" class="form-control" formControlName="Cantidad"
+            [ngClass]="{'is-invalid': (FormRegistro.controls['Cantidad'].touched)  
+            && FormRegistro.controls['Cantidad'].errors, 'is-valid': FormRegistro.controls.Cantidad.valid}" />
+          <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched) 
+                        && FormRegistro.controls['Cantidad'].hasError('required')">
             Dato requerido.
           </div>
-          <div class="validacion" *ngIf="(FormRegistro.controls['FechaVencimiento'].touched) 
-                       && FormRegistro.controls['FechaVencimiento'].hasError('pattern')">
-            Dato fecha, formato dd/mm/aaaa.
+          <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched) 
+                && FormRegistro.controls['Cantidad'].hasError('pattern')">
+            Dato numérico, 1 a 7 dígitos.
           </div>
         </div>
       </div>
 
+              <!-- campo fecha de vencimiento -->
+              <div class="row">
+                <div class="col-sm-4 col-md-3 offset-md-1">
+                  <label class="col-form-label"
+                    >Fecha de Vencimiento<span class="text-danger">*</span>:
+                  </label>
+                </div>
+                <div class="col-sm-8 col-md-6">
+                  <div class="input-group inputMedio">
+                    <input
+                      class="form-control"
+                      placeholder="dd/mm/aaaa"
+                      maxlength="10"
+                      formControlName="FechaVencimiento"
+                      ngbDatepicker
+                      [minDate]="{ year: 1900, month: 1, day: 1 }"
+                      [maxDate]="{ year: 2031, month: 1, day: 1 }"
+                      #RefFechaIngreso="ngbDatepicker"
+                      [ngClass]="{
+                        'is-invalid':
+                          (FormRegistro.controls.FechaVencimiento.touched) &&
+                          FormRegistro.controls.FechaVencimiento.errors,
+                        'is-valid': FormRegistro.controls.FechaVencimiento.valid
+                      }"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        (click)="RefFechaIngreso.toggle()"
+                      >
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                  class="validacion"
+                  *ngIf="
+                  (FormRegistro.controls['FechaVencimiento'].touched) 
+                  && FormRegistro.controls['FechaVencimiento'].hasError('required')" > Dato requerido.  </div>
+                <div class="validacion" *ngIf="(FormRegistro.controls['FechaVencimiento'].touched) 
+                && FormRegistro.controls['FechaVencimiento'].hasError('pattern')">
+                  Dato fecha, formato dd/mm/aaaa. Año >= 1900
+                </div>
+                </div>
+              </div>
+    
       <!-- Campo Medios de pago aceptados -->
 <div class="row">
     <div class="col-sm-4 col-md-3 offset-md-1">
@@ -97,10 +118,10 @@
         <input
           class="custom-control-input"
           type="checkbox"
-          id="TieneTrabajo"
-          formControlName="TieneTrabajo"
+          id="Efectivo"
+          formControlName="Efectivo"
         />
-        <label class="custom-control-label" for="TieneTrabajo">
+        <label class="custom-control-label" for="Efectivo">
           Efectivo en el local
         </label>
       </div>
@@ -108,10 +129,10 @@
         <input
           class="custom-control-input"
           type="checkbox"
-          id="TieneAuto"
-          formControlName="TieneAuto"
+          id="MercadoPago"
+          formControlName="MercadoPago"
         />
-        <label class="custom-control-label" for="TieneAuto">
+        <label class="custom-control-label" for="MercadoPago">
           Mercado Pago
         </label>
       </div>
@@ -119,10 +140,10 @@
         <input
           class="custom-control-input"
           type="checkbox"
-          id="TieneCasa"
-          formControlName="TieneCasa"
+          id="Transferencia"
+          formControlName="Transferencia"
         />
-        <label class="custom-control-label" for="TieneCasa">
+        <label class="custom-control-label" for="Transferencia">
           Transferencia
         </label>
       </div>

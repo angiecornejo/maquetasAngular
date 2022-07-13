@@ -25,8 +25,8 @@
           <label class="col-form-label" for="Nombre">Nombre<span class="text-danger">*</span>:</label>
         </div>
         <div class="col-sm-8 col-md-6">
-          <input type="text" class="form-control" formControlName="Nombre" [ngClass]="{'is-invalid': (FormRegistro.controls['Nombre'].touched)  
-            && FormRegistro.controls['Nombre'].errors}" />
+          <input type="text" class="form-control" maxlength="30" formControlName="Nombre" [ngClass]="{'is-invalid': (FormRegistro.controls['Nombre'].touched)  
+            && FormRegistro.controls['Nombre'].errors, 'is-valid': FormRegistro.controls.Nombre.valid}" />
 
           <div class="validacion" *ngIf="(FormRegistro.controls['Nombre'].touched) 
                         && FormRegistro.controls['Nombre'].hasError('required')">
@@ -35,7 +35,7 @@
           <div class="validacion"
             *ngIf="(FormRegistro.controls['Nombre'].touched) 
                        && (FormRegistro.controls['Nombre'].hasError('minlength') || FormRegistro.controls['Nombre'].hasError('maxlength')) ">
-            Dato texto, 4 a 55 caracteres.
+            Dato texto, 4 a 30 caracteres.
           </div>
         </div>
       </div>
@@ -46,9 +46,9 @@
                     class="text-danger">*</span>:</label>
         </div>
         <div class="col-sm-8 col-md-6">
-          <input type="text" class="form-control" formControlName="Marca"
+          <input type="text" class="form-control" maxlength="30" formControlName="Marca"
          [ngClass]="{'is-invalid': (FormRegistro.controls['Marca'].touched)  
-            && FormRegistro.controls['Marca'].errors}"/>
+            && FormRegistro.controls['Marca'].errors, 'is-valid': FormRegistro.controls.Marca.valid}"/>
 
           <div class="validacion" *ngIf="(FormRegistro.controls['Marca'].touched) 
                         && FormRegistro.controls['Marca'].hasError('required')">
@@ -57,7 +57,7 @@
           <div class="validacion"
             *ngIf="(FormRegistro.controls['Marca'].touched) 
                        && (FormRegistro.controls['Marca'].hasError('minlength') || FormRegistro.controls['Marca'].hasError('maxlength')) ">
-            Dato texto, 4 a 55 caracteres.
+            Dato texto, 4 a 30 caracteres.
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@
         <div class="col-sm-8 col-md-6">
           <select name="Categoria" class="form-control" formControlName="Categoria"
         [ngClass]="{'is-invalid': (FormRegistro.controls['Categoria'].touched)  
-            && FormRegistro.controls['Categoria'].errors}" >
+            && FormRegistro.controls['Categoria'].errors, 'is-valid': FormRegistro.controls.Categoria.valid}" >
             <option value="lacteos">Lácteos</option>
             <option value="carnes">Carnes</option>
             <option value="fideos">Fideos</option>
@@ -116,7 +116,7 @@
         <div class="col-sm-8 col-md-6">
           <input type="text" class="form-control" formControlName="Imagen"
          [ngClass]="{'is-invalid': (FormRegistro.controls['Imagen'].touched)  
-            && FormRegistro.controls['Imagen'].errors}"/>
+            && FormRegistro.controls['Imagen'].errors, 'is-valid': FormRegistro.controls.Imagen.valid}"/>
 
           <div class="validacion" *ngIf="(FormRegistro.controls['Imagen'].touched) 
                         && FormRegistro.controls['Imagen'].hasError('required')">
