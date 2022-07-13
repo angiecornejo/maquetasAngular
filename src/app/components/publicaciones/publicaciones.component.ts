@@ -14,8 +14,7 @@ export class PublicacionesComponent implements OnInit {
 
   Titulo = 'Productos';
 
-  Categorias = ["Lácteos", "Fideos", ];
-  Respuestas = ['Si', 'No'];
+  Submitted = false;
   FormRegistro = new FormGroup({
     Producto: new FormControl('', [Validators.required]),
     Precio: new FormControl(null, [
@@ -38,7 +37,15 @@ export class PublicacionesComponent implements OnInit {
 
   });
 
+  Publicar(){
+    this.Submitted = true;
 
+    if (this.FormRegistro.invalid) {
+          return;
+     }
+
+
+  }
 
   constructor() { }
 

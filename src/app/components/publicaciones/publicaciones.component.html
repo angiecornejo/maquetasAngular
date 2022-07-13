@@ -49,7 +49,7 @@
                       formControlName="Producto"
                       [ngClass]="{
                         'is-invalid':
-                          (FormRegistro.controls.Producto.touched) &&
+                          (FormRegistro.controls.Producto.touched  || Submitted) &&
                           FormRegistro.controls.Producto.invalid,
                         'is-valid': FormRegistro.controls.Producto.valid
                       }"
@@ -58,7 +58,7 @@
                   <div
                     class="validacion"
                     *ngIf="
-                    (FormRegistro.controls['Producto'].touched) 
+                    (FormRegistro.controls['Producto'].touched  || Submitted) 
                     && FormRegistro.controls['Producto'].hasError('required')
                     "
                   >
@@ -74,40 +74,45 @@
         </div>
 
                     <!--campo precio-->
-      <div class="row">
-        <div class="col-sm-4 col-md-3 offset-md-1">
-          <label class="col-form-label" for="Precio">Precio<span
-                    class="text-danger">*</span>:</label>
-        </div>
-        <div class="col-sm-8 col-md-6">
-          <input type="text" name="Precio" maxlength="7" class="form-control" formControlName="Precio"
-            [ngClass]="{'is-invalid': (FormRegistro.controls['Precio'].touched)  
-            && FormRegistro.controls['Precio'].errors, 'is-valid': FormRegistro.controls.Precio.valid}" />
-          <div class="validacion" *ngIf="(FormRegistro.controls['Precio'].touched) 
-                       && FormRegistro.controls['Precio'].hasError('required')">
-            Dato requerido.
-          </div>
-          <div class="validacion" *ngIf="(FormRegistro.controls['Precio'].touched) 
-               && FormRegistro.controls['Precio'].hasError('pattern')">
-            Dato numérico, 1 a 7 dígitos.
-          </div>
-        </div>
-      </div>
+                    <div class="row">
+                      <div class="col-sm-4 col-md-3 offset-md-1">
+                        <label class="col-form-label" for="Precio">Precio<span
+                                  class="text-danger">*</span>:</label>
+                      </div>
+                      <div class="input-group inputMedio">
+                      <div class="col-sm-8 col-md-6">
+                        <input type="text" name="Precio" maxlength="7" class="form-control" formControlName="Precio"
+                          [ngClass]="{'is-invalid': (FormRegistro.controls['Precio'].touched || Submitted)  
+                          && FormRegistro.controls['Precio'].errors, 'is-valid': FormRegistro.controls.Cantidad.valid}" />
+                        <div class="validacion" *ngIf="(FormRegistro.controls['Precio'].touched || Submitted) 
+                                      && FormRegistro.controls['Precio'].hasError('required')">
+                          Dato requerido.
+                        </div>
+                        </div>
+                        <div class="validacion" *ngIf="(FormRegistro.controls['Precio'].touched || Submitted) 
+                              && FormRegistro.controls['Precio'].hasError('pattern')">
+                          Dato numérico, 1 a 7 dígitos.
+                        </div>
+                      </div>
+                    </div>
       <!--campo cantidad-->
       <div class="row">
         <div class="col-sm-4 col-md-3 offset-md-1">
           <label class="col-form-label" for="Cantidad">Cantidad<span
                     class="text-danger">*</span>:</label>
         </div>
+        <div class="input-group inputMedio">
+
         <div class="col-sm-8 col-md-6">
           <input type="text" name="Cantidad" maxlength="7" class="form-control" formControlName="Cantidad"
-            [ngClass]="{'is-invalid': (FormRegistro.controls['Cantidad'].touched)  
+            [ngClass]="{'is-invalid': (FormRegistro.controls['Cantidad'].touched || Submitted)  
             && FormRegistro.controls['Cantidad'].errors, 'is-valid': FormRegistro.controls.Cantidad.valid}" />
-          <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched) 
+          <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched || Submitted) 
                         && FormRegistro.controls['Cantidad'].hasError('required')">
             Dato requerido.
           </div>
-          <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched) 
+          </div>
+          <div class="validacion" *ngIf="(FormRegistro.controls['Cantidad'].touched || Submitted) 
                 && FormRegistro.controls['Cantidad'].hasError('pattern')">
             Dato numérico, 1 a 7 dígitos.
           </div>
@@ -134,7 +139,7 @@
                       #RefFechaIngreso="ngbDatepicker"
                       [ngClass]="{
                         'is-invalid':
-                          (FormRegistro.controls.FechaVencimiento.touched) &&
+                          (FormRegistro.controls.FechaVencimiento.touched || Submitted) &&
                           FormRegistro.controls.FechaVencimiento.errors,
                         'is-valid': FormRegistro.controls.FechaVencimiento.valid
                       }"
@@ -152,9 +157,9 @@
                   <div
                   class="validacion"
                   *ngIf="
-                  (FormRegistro.controls['FechaVencimiento'].touched) 
+                  (FormRegistro.controls['FechaVencimiento'].touched || Submitted) 
                   && FormRegistro.controls['FechaVencimiento'].hasError('required')" > Dato requerido.  </div>
-                <div class="validacion" *ngIf="(FormRegistro.controls['FechaVencimiento'].touched) 
+                <div class="validacion" *ngIf="(FormRegistro.controls['FechaVencimiento'].touched || Submitted) 
                 && FormRegistro.controls['FechaVencimiento'].hasError('pattern')">
                   Dato fecha, formato dd/mm/aaaa. Año >= 2022
                 </div>
@@ -180,7 +185,7 @@
             formControlName="Reservable"
             [ngClass]="{
               'is-invalid':
-                (FormRegistro.controls.Reservable.touched) &&
+                (FormRegistro.controls.Reservable.touched || Submitted) &&
                 FormRegistro.controls.Reservable.errors
             }"
           />
@@ -201,7 +206,7 @@
             formControlName="Reservable"
             [ngClass]="{
               'is-invalid':
-                (FormRegistro.controls.Reservable.touched) &&
+                (FormRegistro.controls.Reservable.touched || Submitted) &&
                 FormRegistro.controls.Reservable.errors
             }"
           />
@@ -214,7 +219,7 @@
         </div>
         <div
           class="validacion"
-          *ngIf="(FormRegistro.controls['Reservable'].touched) 
+          *ngIf="(FormRegistro.controls['Reservable'].touched || Submitted) 
           && FormRegistro.controls['Reservable'].hasError('pattern')"
 
         >
@@ -275,12 +280,12 @@
 
 
       </fieldset>
-  <!-- Botones Grabar, Cancelar/Volver' -->
+  <!-- Botones Publicar, Cancelar/Volver' -->
   <br>
   <br>
   <div class="row justify-content-center botones">
-    <button type="button" class="btn btn-primary">
-          <i class="fa fa-check"></i> Grabar
+    <button type="button" class="btn btn-success" (click)="Publicar()">
+          <i class="fa fa-check"></i> Publicar
       </button>
     &nbsp;
     <button type="button" class="btn btn-warning" routerLink="/productos">

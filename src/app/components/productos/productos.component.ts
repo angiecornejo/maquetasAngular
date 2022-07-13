@@ -19,6 +19,7 @@ export class ProductosComponent implements OnInit {
     I: '(Inicio)',
     A: '(Agregar)',
   };
+  Submitted = false;
   AccionABMC = 'I';
   Mensajes = {
     SD: ' No se encontraron registros...',
@@ -54,7 +55,6 @@ export class ProductosComponent implements OnInit {
     ]), 
     Categoria: new FormControl('', [Validators.required]),
     Imagen: new FormControl('', [Validators.required])
-
   });
 
   FormBusqueda = new FormGroup({
@@ -67,13 +67,26 @@ export class ProductosComponent implements OnInit {
   }
 
   Agregar() {
-    this.AccionABMC = 'A';}
+    this.FormRegistro.reset();
+    this.AccionABMC = 'A';
+    this.Submitted = false;}
 
   Volver() {
     this.AccionABMC = 'I';
+    this.Submitted = false;
   }
   Buscar(){
     this.AccionABMC = 'B';
+    this.Submitted = false;
+  }
+
+  Registrar(){
+    this.Submitted = true;
+
+    if (this.FormRegistro.invalid) {
+          return;
+     }
+    this.AccionABMC = 'I'; 
   }
   
   GetProductos(){
