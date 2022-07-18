@@ -46,7 +46,7 @@ export class ProductosComponent implements OnInit {
     Marca: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
-      Validators.maxLength(55),
+      Validators.maxLength(30),
     ]), 
     Descripcion: new FormControl('', [
       Validators.required,

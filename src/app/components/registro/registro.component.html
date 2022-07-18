@@ -1,0 +1,247 @@
+
+<!-- ESTO ESTÁ SOLO PORQUE SE SOLAPA LA BARRA DE NAVEGACIÓN CON EL CONTENIDO :( -->
+<main id="main">
+    <section>
+      <div class="content">
+        <div class="container">
+  
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="row">
+    <div class="col-sm-4 col-md-3 offset-md-1">
+      <h3>Registrar Usuario</h3>
+    </div>
+</div>
+
+<form name="FormRegistro" [formGroup]='FormRegistro'>
+<div class="container-fluid">
+<fieldset>
+
+  <div class="row">
+    <div class="subtitulo col">
+      <i class="fa fa-user-alt"></i>Datos del Usuario
+    </div>
+  </div>
+
+<!-- Campo Mail -->
+<div class="row">
+    <div class="col-sm-4 col-md-3 offset-md-1">
+      <label class="col-form-label" for="Mail">Mail<span class="text-danger">*</span>:</label>
+    </div>
+    <div class="col-sm-8 col-md-6">
+      <input type="text" class="form-control" maxlength="30" placeholder="usuario@servidor" formControlName="Mail" [ngClass]="{'is-invalid': (FormRegistro.controls['Mail'].touched || Submitted)  
+        && FormRegistro.controls['Mail'].errors, 'is-valid': FormRegistro.controls.Mail.valid}" />
+
+      <div class="validacion" *ngIf="(FormRegistro.controls['Mail'].touched || Submitted) 
+                    && FormRegistro.controls['Mail'].hasError('required')">
+        Dato requerido.
+      </div>
+      <div class="validacion"
+        *ngIf="(FormRegistro.controls['Mail'].touched || Submitted) 
+                   && (FormRegistro.controls.Mail.hasError('email'))">
+        Dato email, formato usuario@servidor
+      </div>
+    </div>
+  </div>
+
+
+
+          <!-- Campo NombreUsuario -->
+          <div class="row">
+            <div class="col-sm-4 col-md-3 offset-md-1">
+              <label class="col-form-label" for="NombreUsuario">Nombre de Usuario<span class="text-danger">*</span>:</label>
+            </div>
+            <div class="col-sm-8 col-md-6">
+              <input type="text" class="form-control" maxlength="30" formControlName="NombreUsuario" [ngClass]="{'is-invalid': (FormRegistro.controls['NombreUsuario'].touched || Submitted)  
+                && FormRegistro.controls['NombreUsuario'].errors, 'is-valid': FormRegistro.controls.NombreUsuario.valid}" />
+    
+              <div class="validacion" *ngIf="(FormRegistro.controls['NombreUsuario'].touched || Submitted) 
+                            && FormRegistro.controls['NombreUsuario'].hasError('required')">
+                Dato requerido.
+              </div>
+              <div class="validacion"
+                *ngIf="(FormRegistro.controls['NombreUsuario'].touched || Submitted) 
+                           && (FormRegistro.controls['NombreUsuario'].hasError('minlength') || FormRegistro.controls['NombreUsuario'].hasError('maxlength')) ">
+                Dato texto, 4 a 30 caracteres.
+              </div>
+            </div>
+          </div>
+
+          
+   <!-- Campo Password -->
+
+   <div class="row">
+    <div class="col-sm-4 col-md-3 offset-md-1">
+      <label class="col-form-label" for="Password">Contraseña<span class="text-danger">*</span>:</label>
+    </div>
+    <div class="col-sm-8 col-md-6">
+      <input type="password" class="form-control" maxlength="30" formControlName="Password" [ngClass]="{'is-invalid': (FormRegistro.controls['Password'].touched || Submitted)  
+        && FormRegistro.controls['Password'].errors, 'is-valid': FormRegistro.controls.Password.valid}" />
+
+      <div class="validacion" *ngIf="(FormRegistro.controls['Password'].touched || Submitted) 
+                    && FormRegistro.controls['Password'].hasError('required')">
+        Dato requerido.
+      </div>
+      <div class="validacion"
+        *ngIf="(FormRegistro.controls['Password'].touched || Submitted) 
+                   && (FormRegistro.controls['Password'].hasError('minlength') || FormRegistro.controls['Password'].hasError('maxlength')) ">
+        Dato texto, 4 a 30 caracteres.
+      </div>
+    </div>
+  </div>
+
+     <!-- Campo ConfirmarPassword -->
+
+     <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="ConfirmarPassword">Confirmar Contraseña<span class="text-danger">*</span>:</label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <input type="password" class="form-control" maxlength="30" formControlName="ConfirmarPassword" [ngClass]="{'is-invalid': (FormRegistro.controls['ConfirmarPassword'].touched || Submitted)  
+            && FormRegistro.controls['ConfirmarPassword'].errors, 'is-valid': FormRegistro.controls.ConfirmarPassword.valid}" />
+    
+          <div class="validacion" *ngIf="(FormRegistro.controls['Password'].touched || Submitted) 
+                        && FormRegistro.controls['ConfirmarPassword'].hasError('required')">
+            Dato requerido.
+          </div>
+          <div class="validacion"
+            *ngIf="(FormRegistro.controls['ConfirmarPassword'].touched || Submitted) 
+                       && (FormRegistro.controls['ConfirmarPassword'].hasError('minlength') || FormRegistro.controls['ConfirmarPassword'].hasError('maxlength')) ">
+            Dato texto, 4 a 30 caracteres.
+          </div>
+        </div>
+      </div>
+
+
+
+<div class="row">
+    <div class="subtitulo col">
+      <i class="fa fa-user-alt"></i>Datos de la Persona
+    </div>
+  </div>
+
+          <!-- Campo Nombre -->
+          <div class="row">
+            <div class="col-sm-4 col-md-3 offset-md-1">
+              <label class="col-form-label" for="NombrePersona">Nombre<span class="text-danger">*</span>:</label>
+            </div>
+            <div class="col-sm-8 col-md-6">
+              <input type="text" class="form-control" maxlength="30" formControlName="NombrePersona" [ngClass]="{'is-invalid': (FormRegistro.controls['NombrePersona'].touched || Submitted)  
+                && FormRegistro.controls['NombrePersona'].errors, 'is-valid': FormRegistro.controls.NombrePersona.valid}" />
+    
+              <div class="validacion" *ngIf="(FormRegistro.controls['NombrePersona'].touched || Submitted) 
+                            && FormRegistro.controls['NombrePersona'].hasError('required')">
+                Dato requerido.
+              </div>
+              <div class="validacion"
+                *ngIf="(FormRegistro.controls['NombrePersona'].touched || Submitted) 
+                           && (FormRegistro.controls['NombrePersona'].hasError('minlength') || FormRegistro.controls['NombrePersona'].hasError('maxlength')) ">
+                Dato texto, 4 a 30 caracteres.
+              </div>
+            </div>
+          </div>
+
+
+                    <!-- Campo Apellido -->
+            <div class="row">
+                <div class="col-sm-4 col-md-3 offset-md-1">
+                    <label class="col-form-label" for="Apellido">Apellido<span class="text-danger">*</span>:</label>
+                </div>
+                <div class="col-sm-8 col-md-6">
+                    <input type="text" class="form-control" maxlength="30" formControlName="Apellido" [ngClass]="{'is-invalid': (FormRegistro.controls['Apellido'].touched || Submitted)  
+                    && FormRegistro.controls['Apellido'].errors, 'is-valid': FormRegistro.controls.Apellido.valid}" />
+        
+                    <div class="validacion" *ngIf="(FormRegistro.controls['Apellido'].touched || Submitted) 
+                                && FormRegistro.controls['Apellido'].hasError('required')">
+                    Dato requerido.
+                    </div>
+                    <div class="validacion"
+                    *ngIf="(FormRegistro.controls['Apellido'].touched || Submitted) 
+                                && (FormRegistro.controls['Apellido'].hasError('minlength') || FormRegistro.controls['Apellido'].hasError('maxlength')) ">
+                    Dato texto, 4 a 30 caracteres.
+                    </div>
+                </div>
+                </div>
+
+<div *ngIf="EsNegocio">
+
+  <div class="row">
+    <div class="subtitulo col">
+      <i class="fa fa-user-alt"></i>Datos del Negocio
+    </div>
+  </div>
+
+
+  <!-- NombreNegocio -->
+  <div class="row">
+    <div class="col-sm-4 col-md-3 offset-md-1">
+      <label class="col-form-label" for="NombreNegocio">Nombre del Negocio<span class="text-danger">*</span>:</label>
+    </div>
+    <div class="col-sm-8 col-md-6">
+      <input type="text" class="form-control" maxlength="30" formControlName="NombreNegocio" [ngClass]="{'is-invalid': (FormRegistro.controls['NombreNegocio'].touched || Submitted)  
+        && FormRegistro.controls['NombreNegocio'].errors, 'is-valid': FormRegistro.controls.NombreNegocio.valid}" />
+
+      <div class="validacion" *ngIf="(FormRegistro.controls['NombreNegocio'].touched || Submitted) 
+                    && FormRegistro.controls['NombreNegocio'].hasError('required')">
+        Dato requerido.
+      </div>
+      <div class="validacion"
+        *ngIf="(FormRegistro.controls['NombreNegocio'].touched || Submitted) 
+                   && (FormRegistro.controls['NombreNegocio'].hasError('minlength') || FormRegistro.controls['NombreNegocio'].hasError('maxlength')) ">
+        Dato texto, 4 a 30 caracteres.
+      </div>
+    </div>
+  </div>
+
+    <!-- Direccion -->
+    <div class="row">
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="Direccion">Direccion<span class="text-danger">*</span>:</label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <input type="text" class="form-control" maxlength="30" formControlName="Direccion" [ngClass]="{'is-invalid': (FormRegistro.controls['Direccion'].touched || Submitted)  
+            && FormRegistro.controls['Direccion'].errors, 'is-valid': FormRegistro.controls.Direccion.valid}" />
+    
+          <div class="validacion" *ngIf="(FormRegistro.controls['Direccion'].touched || Submitted) 
+                        && FormRegistro.controls['Direccion'].hasError('required')">
+            Dato requerido.
+          </div>
+          <div class="validacion"
+            *ngIf="(FormRegistro.controls['Direccion'].touched || Submitted) 
+                       && (FormRegistro.controls['Direccion'].hasError('minlength') || FormRegistro.controls['Direccion'].hasError('maxlength')) ">
+            Dato texto, 4 a 30 caracteres.
+          </div>
+        </div>
+      </div>
+
+
+
+
+</div>
+
+
+
+
+</fieldset>
+<!-- Botones Publicar, Cancelar/Volver' -->
+<br>
+<br>
+<div class="row justify-content-center botones">
+  <button type="button" class="btn btn-success">
+        <i class="fa fa-check"></i> Confirmar
+    </button>
+  &nbsp;
+  <button type="button" class="btn btn-warning">
+        <i class="fa fa-undo"></i> Volver
+    </button>
+</div>
+
+  </div>
+</form>
+
+
+<google-map></google-map>

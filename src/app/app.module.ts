@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
+import { GoogleMapsModule } from '@angular/google-maps'
 import {
   NgbDatepickerModule,
   NgbModalModule,
@@ -21,9 +22,12 @@ import {
   NgbDateParserFormatter,
   NgbDatepickerI18n
 } from '@ng-bootstrap/ng-bootstrap';
+import { RegistroComponent } from './components/registro/registro.component';
+import { GMapsComponent } from './components/g-maps/g-maps.component';
 // import { DatePickerAdapterISO } from './shared/DatePickerAdapterISO';
 // import { DatePickerParserFormatter } from './shared/DatePickerParserFormater';
 // import { DatePickerSpanish } from './shared/DatePickerSpanish';
+//AIzaSyAJ_agq38ZVn6DrMUKhUhF1YnDXFoGSVYc
 
 @NgModule({
   declarations: [
@@ -33,15 +37,20 @@ import {
     LandingPageComponent,
     LoginComponent,
     ProductosComponent,
-    PublicacionesComponent
+    PublicacionesComponent,
+    RegistroComponent,
+    GMapsComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    GoogleMapsModule,
+    
     AppRoutingModule,
     RouterModule.forRoot([
       { path: 'productos', component: ProductosComponent },
-      { path: 'publicaciones', component: PublicacionesComponent }
+      { path: 'publicaciones', component: PublicacionesComponent },
+      { path: 'registro', component: RegistroComponent }
       
     
     ]),
